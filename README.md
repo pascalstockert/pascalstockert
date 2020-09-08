@@ -1,7 +1,25 @@
 ## Welcome to my github!
 
-Hey, I'm Pasu aka. Pascal - former CS student and currently working fulltime as webdev @ Digital H in Germany!
+Hey, I'm Pasu aka. Pascal - former CS student and currently working fulltime as webdev!
 
-<img src="https://github-readme-stats.vercel.app/api?username=pascalstockert&show_icons=true&count_private=true&hide=stars" alt="There's supposed to be a fancy image here.." />
+### Stuff I work(ed) with
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=pascalstockert" alt="There's supposed to be a fancy image here.." />
+**Development**
+- Angular (frontend framework)
+- React (frontend framework)
+- Firebase (backend)
+- Prismic (headless CMS)
+- Wordpress (and the underlying PHP)
+
+**Design**
+- Figma
+- XD
+- Illustrator
+- Photoshop
+
+**Languages**
+
+<img align="left" alt="ES15" width="26px" src="https://www.benmvp.com/static/bf5110fcdc155bf03a62c7863573ec65/c7de9/ecmascript-logo.webp" />
+- ES15/ TS
+- HTML + CSS
+- PHP

@@ -9,10 +9,11 @@ Hey, I'm Pasu aka. Pascal - former CS student and currently working fulltime as 
 - Typescript
 - SCSS
 - Angular
-- React
 - Firebase
 - Prismic
 - Python
+- Docker
+- React
 - Wordpress (including plugin-development)
 
 **Design**

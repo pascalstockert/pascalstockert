@@ -1,4 +1,4 @@
-## Welcome to my github!
+## Welcome to my github! <img src="https://komarev.com/ghpvc/?username=pascalstockert&color=orange" align="right" />
 
 Hey, I'm Pasu aka. Pascal - former CS student and currently working fulltime as webdev!
 

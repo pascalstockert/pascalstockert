@@ -4,20 +4,32 @@ Hey, I'm Pasu aka. Pascal - former CS student and currently working fulltime as 
 
 ### Stuff I work(ed) with
 
-**Development**
-- ES6
-- Typescript
-- SCSS
-- Angular
-- Firebase
+**Languages**
+- JavaScript (ES6) 🚀
+- TypeScript 🚀
+- CSS5 / SCSS 🚀
+- Python 🔥
+- PHP
+- Go 🔍
+- Java
+- C(++)
+- x86 ASM
+
+**Frameworks, Libs & Tools**
+- Docker 🚀
+- Angular 🚀
+- Node.js 🚀
+- Deno 🔍
+- React Native
+
+**CMSs & DBs**
+- Firebase 🚀
+- PostgreSQL 🚀
+- MySQL 🔥
 - Prismic
-- Python
-- Docker
-- React
-- Wordpress (including plugin-development)
 
 **Design**
-- Figma
-- XD
+- Figma 🚀
+- XD 🔥
 - Illustrator
 - Photoshop

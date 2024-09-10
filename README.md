@@ -1,6 +1,6 @@
 ## Hiya!
 
-I'm Pascal - former CS student, working as a fullstack web developer, 
-currently pursuing my Bachelor's in Webdesign and -development. 
+I'm Pascal - currently working as a web developer and<br>
+pursuing my Bachelor's in Webdesign and -development. 
 
-Learn more about me @ [pasu.me](https://pasu.me)
+CV and other things @ [pasu.me](https://pasu.me)

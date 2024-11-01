@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1, h2, h3, h4, h5, h6, p, span {
+    @apply text-black;
+    @apply selection:bg-malfi/40;
+  }
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/font/nunito-variable.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/font/raleway-variable.ttf) format('truetype');
+}
+
+h1 {
+  font-family: Nunito, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: Nunito, sans-serif;
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-family: Nunito, sans-serif;
+  font-size: 1.375rem;
+}
+
+a {
+  text-decoration: underline;
+}

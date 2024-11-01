@@ -1,23 +1,18 @@
 {
-  "name": "pasu-home",
-  "version": "0.0.0",
+  "name": "playground",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "copy:files": "cp -r src/* dist/",
-    "build:styles": "tailwindcss -i ./src/styles.css -o ./dist/styles.css",
-    "build:styles:watch": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
-    "build": "npm run copy:files & npm run build:styles",
-    "dev:build": "chokidar \"./src/**/*\" -c \"npm run copy:files & npm run build:styles\"",
-    "dev:server": "cross-env DEV_SERVER_PORT=4200 DEV_SERVER_ROOT=./dist dev-server",
-    "dev": "concurrently \"npm run dev:build\" \"npm run dev:server\""
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "chokidar-cli": "^3.0.0",
-    "concurrently": "^8.2.2",
-    "cross-env": "^7.0.3",
-    "dev-server": "^0.2.0",
-    "tailwindcss": "^3.4.1",
-    "webpack-dev-server": "^5.0.3"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.8"
   }
 }

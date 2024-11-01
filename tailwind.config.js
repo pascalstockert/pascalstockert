@@ -1,24 +1,25 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
-
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/*.html"],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts}",
+  ],
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Quicksand', defaultTheme.fontFamily.sans],
-        'serif': ['"Times New Roman"', defaultTheme.fontFamily.serif],
-      },
-      screens: {
-        'hr': '512px',
-      },
-      spacing: {
-        '128': '32rem',
-        '256': '64rem',
+        'sans': ['Raleway', defaultTheme.fontFamily.sans],
       },
     },
+    colors: {
+      white: '#FFFBEF',
+      black: '#453B3A',
+      yolol: '#B14E7F',
+      brock: '#CD3723',
+      mead: '#C69F3D',
+      malfi: '#77DD77',
+    }
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
 }
+

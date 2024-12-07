@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:build": "docker buildx build --platform linux/amd64,linux/arm64 -t pasupasu/pasu-home .",
+    "docker:push": "docker push pasupasu/pasu-home"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

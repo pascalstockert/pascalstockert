@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "docker:build": "docker buildx build --platform linux/amd64,linux/arm64 -t pasupasu/pasu-home .",
+    "docker:build": "docker buildx build --platform linux/amd64 -t pasupasu/pasu-home . --load",
     "docker:push": "docker push pasupasu/pasu-home"
   },
   "devDependencies": {

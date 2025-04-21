@@ -7,12 +7,8 @@ export default {
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        scribble: path.resolve('src/scribble/scribble.html'),
+        scribble: path.resolve('src/scribble/index.html'),
       },
-      external: [
-        'index.html',
-        'src/scribble/scribble.html'
-      ]
     },
   },
 } satisfies UserConfig;

@@ -7,7 +7,6 @@ export default {
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        scribble: path.resolve('src/scribble/index.html'),
       },
     },
   },

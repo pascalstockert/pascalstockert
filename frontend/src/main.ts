@@ -6,3 +6,11 @@ const preventDraggingOnElements = (query: string) => {
 }
 
 preventDraggingOnElements('img');
+
+document.getElementById('babby')?.addEventListener('click', () => {
+  console.log('clicked')
+  document.startViewTransition(() => {
+    window.location.href = '/content/scribbles/some-test-scribble';
+  });
+});
+

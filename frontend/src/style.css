@@ -44,7 +44,3 @@ h3 {
 a {
   text-decoration: underline;
 }
-
-@view-transition {
-  navigation: auto;
-}

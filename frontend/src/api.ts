@@ -1,4 +1,5 @@
 export enum CollectionName {
+  PROJECTS = 'projects',
   STORIES = 'stories',
   THOUGHTS = 'thoughts',
 }
@@ -6,30 +7,29 @@ export enum CollectionName {
 export type Filter = any;
 
 const getUrl = async <T = any>(url: string, filter?: object): Promise<T> => {
-  console.log(JSON.stringify(url));
+  // TODO convert filter to query param
   console.log(JSON.stringify(filter));
   const res = await fetch(url);
 
   return await res.json();
 };
 
-const applyFilter = (callback: <T = any>(filter: Filter) => Promise<T>, filter: Filter) => {
+const applyFilter = <T = any>(callback: (filter: Filter) => Promise<T>, filter: Filter) => {
   return {
-    get: <T = any>() => callback<T>(filter)
+    get: () => callback(filter),
   }
 }
 
-const collectionPrototype = (host: string, collectionName: string) => {
+const collectionPrototype = <T = any>(host: string, collectionName: string) => {
   const bulkEndpoint = `${host}/content/items/${collectionName}`;
   const singletonEndpoint = `${host}/content/item/${collectionName}`;
 
   return {
-    get: <T = any>(id: string) => getUrl<T>(`${singletonEndpoint}/${id}`),
-    getAll: <T = any>() => getUrl<T>(bulkEndpoint),
-    filter: (filterObj: Filter) => applyFilter((filter) => getUrl(bulkEndpoint, filter), filterObj),
+    get: (id: string) => getUrl<T>(`${singletonEndpoint}/${id}`),
+    getAll: () => getUrl<T>(bulkEndpoint),
+    filter: (filterObj: Filter) => applyFilter((filter) => getUrl<T>(bulkEndpoint, filter), filterObj),
   };
 };
-
 
 export const createApi = (host = 'https://cockpit.box.pasu.me/api') => {
   return {

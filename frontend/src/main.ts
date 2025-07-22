@@ -1,5 +1,7 @@
 import './style.css';
 
+import { createApi, DocumentType } from './api.ts';
+
 const preventDraggingOnElements = (query: string) => {
   document.querySelectorAll(query)
     .forEach(element => element.setAttribute('draggable', 'false'));
@@ -13,4 +15,9 @@ document.getElementById('babby')?.addEventListener('click', () => {
     window.location.href = '/content/scribbles/some-test-scribble';
   });
 });
+
+const api = createApi();
+const storiesResponse = await api.get(DocumentType.STORIES).all();
+const stories = await storiesResponse.json();
+console.log(stories)
 

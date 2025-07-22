@@ -1,6 +1,6 @@
 import './style.css';
 
-import { createApi, DocumentType } from './api.ts';
+import { CollectionName, createApi } from './api.ts';
 
 const preventDraggingOnElements = (query: string) => {
   document.querySelectorAll(query)
@@ -9,15 +9,13 @@ const preventDraggingOnElements = (query: string) => {
 
 preventDraggingOnElements('img');
 
-document.getElementById('babby')?.addEventListener('click', () => {
-  console.log('clicked')
-  document.startViewTransition(() => {
-    window.location.href = '/content/scribbles/some-test-scribble';
-  });
-});
-
 const api = createApi();
-const storiesResponse = await api.get(DocumentType.STORIES).all();
-const stories = await storiesResponse.json();
-console.log(stories)
 
+const specificStory = await api.collection(CollectionName.STORIES).get('6859b1c28f62a03bb801a151');
+console.log('specific story', specificStory);
+
+const stories = await api.collection(CollectionName.STORIES).getAll();
+console.log('fetched stories', stories);
+
+const filteredStories = await api.collection(CollectionName.STORIES).filter({test: 'test'}).get();
+console.log('filtered stories', filteredStories);

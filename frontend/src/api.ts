@@ -1,3 +1,18 @@
+export interface Project {
+  sortIndex: number;
+  title: string;
+  description: string;
+  builtWith: string;
+  preview: {
+    _id: string;
+  };
+  links: {
+    web?: string;
+    github?: string;
+  };
+  color: {r: number; g: number; b: number};
+}
+
 export enum CollectionName {
   PROJECTS = 'projects',
   STORIES = 'stories',
@@ -26,13 +41,33 @@ const collectionPrototype = <T = any>(host: string, collectionName: string) => {
 
   return {
     get: (id: string) => getUrl<T>(`${singletonEndpoint}/${id}`),
-    getAll: () => getUrl<T>(bulkEndpoint),
-    filter: (filterObj: Filter) => applyFilter((filter) => getUrl<T>(bulkEndpoint, filter), filterObj),
+    getAll: () => getUrl<Array<T>>(bulkEndpoint),
+    filter: (filterObj: Filter) => applyFilter((filter) => getUrl<Array<T>>(bulkEndpoint, filter), filterObj),
   };
 };
 
+interface AssetOptions {
+  width: number;
+}
+
+const getAssetPath = (host: string, assetId: string, options?: AssetOptions): string => {
+  const query = new URLSearchParams();
+  query.set('w', String(options?.width ?? 800));
+  query.set('o', '1');
+
+  return `${host}/assets/image/${assetId}?${query.toString()}`;
+};
+
+const assetPrototype = (host: string, assetId: string, options?: AssetOptions) => {
+  return {
+    get: () => getAssetPath(host, assetId, options),
+  }
+}
+
 export const createApi = (host = 'https://cockpit.box.pasu.me/api') => {
   return {
-    collection: (name: string) => collectionPrototype(host, name),
+    asset: (assetId: string, options?: AssetOptions) => assetPrototype(host, assetId, options),
+    collection: <T = any>(name: string) => collectionPrototype<T>(host, name),
   }
 };
+

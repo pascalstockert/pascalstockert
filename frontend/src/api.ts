@@ -1,75 +1,73 @@
-export interface Project {
-  sortIndex: number;
-  title: string;
-  description: string;
-  builtWith: string;
-  preview: {
-    _id: string;
-  };
-  links: {[key in LinkOrigin]: string};
-  color: {r: number; g: number; b: number};
-}
+import { Asset, AssetOptions, DocumentMeta, Query } from './types/api.types.ts';
 
-export enum LinkOrigin {
-  WEB = 'web',
-  GITHUB = 'github',
-}
+const getUrl = async <T = any>(url: string, query?: Query<T>): Promise<Array<DocumentMeta<T>>> => {
+  const queryParams = new URLSearchParams();
 
-export enum CollectionName {
-  PROJECTS = 'projects',
-  STORIES = 'stories',
-  THOUGHTS = 'thoughts',
-}
+  if (query) {
+    if (query.locale) {queryParams.set('locale', query.locale);}
+    if (query.limit) {queryParams.set('limit', String(query.limit));}
+    if (query.skip) {queryParams.set('skip', String(query.skip));}
+    if (query.populate) {queryParams.set('populate', String(query.populate));}
+    if (query.filter) {queryParams.set('filter', JSON.stringify(query.filter));}
+    if (query.fields) {
+      queryParams.set('fields', JSON.stringify(query.fields));
+    }
+    if (query.sort) {queryParams.set('sort', JSON.stringify(query.sort));}
+  }
 
-export type Filter = any;
-
-const getUrl = async <T = any>(url: string, filter?: object): Promise<T> => {
-  // TODO convert filter to query param
-  console.log(JSON.stringify(filter));
-  const res = await fetch(url);
+  const res = await fetch(`${url}?${queryParams.toString()}`);
 
   return await res.json();
 };
-
-const applyFilter = <T = any>(callback: (filter: Filter) => Promise<T>, filter: Filter) => {
-  return {
-    get: () => callback(filter),
-  }
-}
 
 const collectionPrototype = <T = any>(host: string, collectionName: string) => {
   const bulkEndpoint = `${host}/content/items/${collectionName}`;
   const singletonEndpoint = `${host}/content/item/${collectionName}`;
 
   return {
-    get: (id: string) => getUrl<T>(`${singletonEndpoint}/${id}`),
-    getAll: () => getUrl<Array<T>>(bulkEndpoint),
-    filter: (filterObj: Filter) => applyFilter((filter) => getUrl<Array<T>>(bulkEndpoint, filter), filterObj),
+    document: (id: string) => getUrl<T>(`${singletonEndpoint}/${id}`),
+    query: (queryObject?: Query<T>) => getUrl<T>(bulkEndpoint, queryObject),
   };
 };
 
-interface AssetOptions {
-  width: number;
-}
-
-const getAssetPath = (host: string, assetId: string, options?: AssetOptions): string => {
+const getImagePath = (host: string, assetId: string, options?: AssetOptions): string => {
   const query = new URLSearchParams();
-  query.set('w', String(options?.width ?? 800));
-  query.set('o', '1');
+
+  if (options) {
+    if (options.resizeMode) {query.set('m', options.resizeMode);}
+    if (options.width) {query.set('w', String(options.width));}
+    if (options.height) {query.set('h', String(options.height));}
+    if (options.quality) {query.set('q', String(options.quality));}
+    if (options.mime) {query.set('mime', options.mime);}
+    if (options.redirectToThumbnail) {query.set('re', String(options.redirectToThumbnail));}
+    if (options.cacheInvalidationTimestamp) {query.set('t', String(options.cacheInvalidationTimestamp));}
+    if (options.binary) {query.set('o', String(Number(options.binary)));}
+  }
 
   return `${host}/assets/image/${assetId}?${query.toString()}`;
 };
 
-const assetPrototype = (host: string, assetId: string, options?: AssetOptions) => {
-  return {
-    get: () => getAssetPath(host, assetId, options),
-  }
+const fetchAsset = async (url: string): Promise<Asset> => {
+  const response = await fetch(url);
+
+  return await response.json();
 }
 
-export const createApi = (host = 'https://cockpit.box.pasu.me/api') => {
-  return {
-    asset: (assetId: string, options?: AssetOptions) => assetPrototype(host, assetId, options),
-    collection: <T = any>(name: string) => collectionPrototype<T>(host, name),
-  }
+const defaultImageOptions: AssetOptions = {
+  width: 800,
+  binary: true,
 };
 
+const imagePrototype = (host: string, assetId: string, options: AssetOptions = defaultImageOptions) => {
+  return {
+    path: getImagePath(host, assetId, options),
+    fetch: () => fetchAsset(getImagePath(host, assetId, options)),
+  };
+}
+
+export const createApi = (host: string) => {
+  return {
+    collection: <T = any>(name: string) => collectionPrototype<T>(host, name),
+    image: (assetId: string, options?: AssetOptions) => imagePrototype(host, assetId, options),
+  }
+};

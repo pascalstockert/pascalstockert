@@ -1,7 +1,9 @@
-import { createApi, LinkOrigin, Project } from '../api.ts';
+import { createApi } from '../api.ts';
+import { DocumentMeta } from '../types/api.types.ts';
+import { LinkOrigin, Project } from '../types/project.types.ts';
 
-export const createProjectElement = (api: ReturnType<typeof createApi>, project: Project): ChildNode => {
-  const imagePath = api.asset(project.preview._id, {width: 512}).get();
+export const createProjectElement = (api: ReturnType<typeof createApi>, project: DocumentMeta<Project>): ChildNode => {
+  const imagePath: string = api.image(project.preview._id, {width: 512, binary: true}).path;
 
   const htmlString = `
   <div 

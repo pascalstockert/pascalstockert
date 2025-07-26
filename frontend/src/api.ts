@@ -6,11 +6,13 @@ export interface Project {
   preview: {
     _id: string;
   };
-  links: {
-    web?: string;
-    github?: string;
-  };
+  links: {[key in LinkOrigin]: string};
   color: {r: number; g: number; b: number};
+}
+
+export enum LinkOrigin {
+  WEB = 'web',
+  GITHUB = 'github',
 }
 
 export enum CollectionName {

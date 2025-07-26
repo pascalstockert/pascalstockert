@@ -1,7 +1,7 @@
-import { createApi, Project } from '../api.ts';
+import { createApi, LinkOrigin, Project } from '../api.ts';
 
 export const createProjectElement = (api: ReturnType<typeof createApi>, project: Project): ChildNode => {
-  const imagePath = api.asset(project.preview._id, {width: 400}).get();
+  const imagePath = api.asset(project.preview._id, {width: 512}).get();
 
   const htmlString = `
   <div 
@@ -16,7 +16,7 @@ export const createProjectElement = (api: ReturnType<typeof createApi>, project:
       />
     </div>
 
-    <div class="flex gap-2 h-full p-8 hidden md:block md:flex-col md:px-0">
+    <div class="flex gap-2 h-full p-8 md:block md:flex-col md:px-0">
       <div 
         class="flex-1 w-2 h-2 rounded-lg md:h-full"
         style="background: ${getColor({...project.color, a: .4})};"
@@ -28,22 +28,11 @@ export const createProjectElement = (api: ReturnType<typeof createApi>, project:
       <p>${project.builtWith}</p>
       <p>${project.description}</p>
       <div class="flex gap-2">
-        <a 
-          href="https://yolol.pasu.me" 
-          target="_blank" 
-          class="p-1 rounded-lg"
-          style="background: ${getColor({...project.color, a: .4})};"
-        >
-          <img src="/icon/link-light.svg" alt="link to website" />
-        </a>
-        <a 
-          href="https://github.com/pascalstockert/yolol" 
-          target="_blank" 
-          class="p-1 rounded-lg"
-          style="background: ${getColor({...project.color, a: .4})};"
-        >
-          <img src="/icon/gh-light.svg" alt="link to github" />
-        </a>
+        ${
+          (Object.keys(project.links) as LinkOrigin[])
+            .map((kind) => getLinkElementString(kind, project.links[kind], {...project.color, a: .4}))
+            .join('\n')
+        }
       </div>
     </div>
   </div>
@@ -54,6 +43,24 @@ export const createProjectElement = (api: ReturnType<typeof createApi>, project:
 
   return doc.body.firstChild!;
 }
+
+const getLinkElementString = (kind: LinkOrigin, link: string, color: {r: number, g: number, b: number, a: number}): string => {
+  const iconMap: { [key in LinkOrigin]: {link: string; alt: string;} } = {
+    [LinkOrigin.WEB]: {link: '/icon/link-light.svg', alt: 'link to a website'},
+    [LinkOrigin.GITHUB]: {link: '/icon/gh-light.svg', alt: 'link to github'},
+  };
+
+  return `
+  <a 
+    href="${link}"
+    target="_blank"
+    class="p-1 rounded-lg"
+    style="background: ${getColor(color)};"
+  >
+    <img src="${iconMap[kind].link}" alt="${iconMap[kind].alt}" />
+  </a>
+  `;
+};
 
 const getColor = ({r, g, b, a}: {r: number, g: number, b: number, a: number}) =>
   `rgb(${r} ${g} ${b} / ${a ?? 1})`;

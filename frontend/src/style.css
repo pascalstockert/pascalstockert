@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  h1, h2, h3, h4, h5, h6, p, span {
+  h1, h2, h3, h4, h5, h6, p, a, div, span {
     @apply text-black;
-    @apply selection:bg-malfi/40;
+    @apply selection:bg-black selection:text-white selection:rounded-md;
   }
 }
 

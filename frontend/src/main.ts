@@ -11,7 +11,7 @@ const preventDraggingOnElements = (query: string) => {
 
 preventDraggingOnElements('img');
 
-const api = createApi('https://cockpit.box.pasu.me/api');
+const api = createApi('https://cockpit.evo.pasu.me/api');
 
 const projects = await api
   .collection<Project>(CollectionName.PROJECTS)

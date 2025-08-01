@@ -1,8 +1,7 @@
-import { createApi } from '../api.ts';
-import { DocumentMeta } from '../types/api.types.ts';
+import { createClient, DocumentMeta } from '@pasu/cockpit-client';
 import { LinkOrigin, Project } from '../types/project.types.ts';
 
-export const createProjectElement = (api: ReturnType<typeof createApi>, project: DocumentMeta<Project>): ChildNode => {
+export const createProjectElement = (api: ReturnType<typeof createClient>, project: DocumentMeta<Project>): ChildNode => {
   const imagePath: string = api.image(project.preview._id, {width: 512, binary: true}).path;
 
   const htmlString = `

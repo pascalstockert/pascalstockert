@@ -1,17 +1,11 @@
 import './style.css';
 
-import { createApi } from './api.ts';
 import { createProjectElement } from './components/project.ts';
 import { CollectionName, Project } from './types/project.types.ts';
 
-const preventDraggingOnElements = (query: string) => {
-  document.querySelectorAll(query)
-    .forEach(element => element.setAttribute('draggable', 'false'));
-}
+import { createClient } from '@pasu/cockpit-client';
 
-preventDraggingOnElements('img');
-
-const api = createApi('https://cockpit.evo.pasu.me/api');
+const api = createClient('https://cockpit.evo.pasu.me/api');
 
 const projects = await api
   .collection<Project>(CollectionName.PROJECTS)
@@ -30,3 +24,10 @@ if (projectAnchor) {
       projectAnchor.appendChild(projectElement);
     });
 }
+
+const preventDraggingOnElements = (query: string) => {
+  document.querySelectorAll(query)
+    .forEach(element => element.setAttribute('draggable', 'false'));
+}
+
+preventDraggingOnElements('img');

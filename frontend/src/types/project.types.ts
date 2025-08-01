@@ -1,4 +1,4 @@
-import { Asset } from './api.types.ts';
+import { Asset } from '@pasu/cockpit-client';
 
 export interface Project {
   sortIndex: number;

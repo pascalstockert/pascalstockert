@@ -1,0 +1,12 @@
+:3000 {
+    root * /srv
+    file_server
+
+    handle / {
+        try_files {path} /index.html
+    }
+
+    handle /ideas* {
+        try_files {path} /src/pages/ideas/index.html
+    }
+}

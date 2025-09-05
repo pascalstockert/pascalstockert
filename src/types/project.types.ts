@@ -10,6 +10,13 @@ export interface Project {
   color: {r: number; g: number; b: number};
 }
 
+export interface Thought {
+  title: string;
+  teaser: string;
+  content: string;
+  tags: string[];
+}
+
 export enum LinkOrigin {
   WEB = 'web',
   GITHUB = 'github',

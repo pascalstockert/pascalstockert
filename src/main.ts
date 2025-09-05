@@ -1,9 +1,10 @@
 import './style.css';
 
 import { createProjectElement } from './components/project.ts';
-import { CollectionName, Project } from './types/project.types.ts';
+import { CollectionName, Project, Thought } from './types/project.types.ts';
 
 import { createClient } from '@pasu/cockpit-client';
+import { createThoughtElement } from './components/thought.ts';
 
 const api = createClient('https://cockpit.evo.pasu.me/api');
 
@@ -23,6 +24,21 @@ if (projectAnchor) {
     .forEach((projectElement) => {
       projectAnchor.appendChild(projectElement);
     });
+}
+
+const thoughts = await api
+  .collection<Thought>(CollectionName.THOUGHTS)
+  .query({
+    limit: 3,
+  });
+console.log(thoughts);
+const thoughtAnchor = document.querySelector('#thought-anchor');
+if (thoughtAnchor) {
+  thoughts
+    .map(thought => createThoughtElement(thought))
+    .forEach((thoughtElement) => {
+      thoughtAnchor.appendChild(thoughtElement)
+    })
 }
 
 const preventDraggingOnElements = (query: string) => {

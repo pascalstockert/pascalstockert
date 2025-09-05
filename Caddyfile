@@ -1,12 +1,12 @@
 :3000 {
-    root * /srv/src
+    root * /srv
     file_server
 
     handle / {
-        try_files {path} /index.html
+        try_files {path} /src/index.html
     }
 
     handle /ideas* {
-        try_files {path} /pages/ideas/index.html
+        try_files {path} src/pages/ideas/index.html
     }
 }

@@ -7,7 +7,7 @@ export default defineConfig({
     target: 'esnext',
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'index.html'),
+        main: path.resolve(__dirname, 'src/index.html'),
         ideas: path.resolve(__dirname, 'src/pages/ideas/index.html'),
       },
     },
@@ -17,6 +17,13 @@ export default defineConfig({
       name: 'rewrite-ideas',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
+          if (req.url === '/') {
+            const filePath = path.resolve(__dirname, 'src/index.html')
+            const html = fs.readFileSync(filePath, 'utf-8')
+            res.setHeader('Content-Type', 'text/html')
+            res.end(html)
+            return
+          }
           if (req.url?.startsWith('/ideas')) {
             const filePath = path.resolve(__dirname, 'src/pages/ideas/index.html')
             const html = fs.readFileSync(filePath, 'utf-8')

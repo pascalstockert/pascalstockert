@@ -44,3 +44,33 @@ h3 {
 a {
   text-decoration: underline;
 }
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-container {
+  position: relative;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-container .track {
+  @apply absolute;
+  @apply right-0;
+  @apply top-0;
+  @apply w-5;
+  @apply h-full;
+  @apply overflow-hidden;
+}
+
+.scroll-container .track .thumb {
+  @apply w-full;
+  @apply bg-clip-content;
+  @apply rounded-xl;
+  @apply bg-black;
+  @apply opacity-100;
+  transition: opacity .3s;
+  border: 6px solid transparent;
+}

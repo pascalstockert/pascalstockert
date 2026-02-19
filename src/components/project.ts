@@ -9,7 +9,10 @@ export const createProjectElement = (api: ReturnType<typeof createClient>, proje
     class="flex flex-col p-4 rounded-2xl md:grid md:grid-cols-[1fr_8px_1fr] md:gap-8"
     style="background: ${getColor({...project.color, a: .4})};"
   >
-    <div class="max-h-[256px] border border-black overflow-y-scroll md:overscroll-contain rounded-xl">
+    <div 
+      class="scroll-container max-h-[256px] border border-black overflow-y-scroll md:overscroll-contain rounded-xl"
+      data-scroll-thumb-color="${getColor({...project.color, a: .7})}"
+    >
       <img
         src="${imagePath}"
         alt="Screenshot of ${project.title}"

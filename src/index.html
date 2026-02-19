@@ -1,102 +1,104 @@
 <!doctype html>
-<html lang="en" class="bg-white">
+<html lang="en" class="overflow-hidden">
 <head>
   <meta charset="UTF-8"/>
   <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>hi, i'm pasu</title>
 </head>
-<body class="max-w-[960px] w-full m-auto px-8 bg-white">
-<div class="relative w-full">
-  <section class="flex justify-between items-center w-full pt-24 pb-8 px-4">
-    <h1>Pascal Stockert</h1>
+<body class="scroll-container overflow-scroll w-full h-screen bg-white">
+<div class="max-w-[960px] w-full m-auto px-8 bg-white">
+  <div class="relative w-full">
+    <section class="flex justify-between items-center w-full pt-24 pb-8 px-4">
+      <h1>Pascal Stockert</h1>
 
-    <div class="flex flex-wrap justify-end gap-4">
-      <div class="flex gap-4">
+      <div class="flex flex-wrap justify-end gap-4">
+        <div class="flex gap-4">
+          <a href="/pdf/cv.pdf" target="_blank"><img src="/icon/cv.svg" alt="Curriculum Vitae"/></a>
+          <a href="https://github.com/pascalstockert" target="_blank"><img src="/icon/gh.svg" alt="GitHub"/></a>
+        </div>
+        <div class="flex gap-4">
+          <a href="https://www.linkedin.com/in/pascalstockert" target="_blank"><img
+            src="/icon/li.svg" alt="LinkedIn"
+          /></a>
+          <a href="mailto:hello+home@pasu.me" target="_blank"><img src="/icon/mail.svg" alt="Mail"/></a>
+        </div>
+      </div>
+    </section>
+
+    <img
+      id="babby"
+      src="/img/eepy-babby.webp"
+      alt="In memoriam"
+      class="w-full h-[256px] border border-black rounded-2xl object-cover md:mb-8"
+    />
+
+    <section class="flex flex-col-reverse mb-16 md:grid md:grid-cols-[1fr_8px_1fr] md:gap-8">
+      <div class="flex items-center h-full p-8 border-8 border-malfi/40 rounded-2xl">
+        <p>
+          I'm a web developer currently based in Mönchengladbach, Germany. I've been working in the field for over five
+          years now, gathering experience in full-stack development. My main focus remains contributing towards a
+          white-label ticketing solution built on Angular and Nest.js.<br/>
+          <br/>
+          If you want to learn more about my previous work experience and education, feel free to have a look at my
+          <a href="/pdf/cv.pdf" target="_blank">curriculum</a>, or some of the projects that I worked on in my free
+          time.<br/>
+          <br/>
+          You may also want to take a look at my
+          <a href="https://www.linkedin.com/in/pascalstockert" target="_blank">LinkedIn profile</a> or
+          <a href="https://github.com/pascalstockert" target="_blank">GitHub account</a>.
+        </p>
+      </div>
+
+      <div class="flex gap-2 h-full p-8 md:flex-col md:px-0">
+        <div class="flex-1 w-2 bg-black/50 rounded-lg"></div>
+        <div class="w-2 h-2 bg-brock/40 rounded-lg"></div>
+        <div class="w-2 h-2 bg-yolol/40 rounded-lg"></div>
+        <div class="w-2 h-2 bg-malfi/40 rounded-lg"></div>
+      </div>
+
+      <div class="hidden w-full h-full p-8 border border-black rounded-2xl md:block">
+        <div
+          class="w-full h-full border border-black rounded-lg bg-cover bg-center bg-[url('https://cockpit.evo.pasu.me/assets/link/68a4e244dd3547c10e0793d5')]"
+        ></div>
+      </div>
+    </section>
+
+    <section class="pb-16">
+      <div class="px-4 py-8">
+        <h2 class="">Thoughts</h2>
+        <p>Intellectual sparks and interesting stuff on code</p>
+      </div>
+
+      <div id="thought-anchor" class="grid grid-rows-3 gap-8 pb-8 md:grid md:grid-rows-none md:grid-cols-3"></div>
+
+      <div class="flex justify-center w-full">
+        <a href="/ideas">
+          <button class="px-4 py-3 bg-malfi/40 rounded-lg hover:bg-malfi/50">explore my brain</button>
+        </a>
+      </div>
+    </section>
+
+    <section class="pb-16">
+      <div class="px-4 py-8">
+        <h2 class="">Projects</h2>
+        <p>Some practical stuff I've dabbled with</p>
+      </div>
+
+      <div id="project-anchor" class="flex flex-col gap-8"></div>
+    </section>
+
+    <section class="flex flex-col justify-center items-center gap-4 w-full px-4 pt-16 pb-8">
+      <p>tl;dr – I make websites</p>
+
+      <div class="flex gap-4 h-full">
         <a href="/pdf/cv.pdf" target="_blank"><img src="/icon/cv.svg" alt="Curriculum Vitae"/></a>
         <a href="https://github.com/pascalstockert" target="_blank"><img src="/icon/gh.svg" alt="GitHub"/></a>
-      </div>
-      <div class="flex gap-4">
-        <a href="https://www.linkedin.com/in/pascalstockert" target="_blank"><img
-          src="/icon/li.svg" alt="LinkedIn"
-        /></a>
+        <a href="https://www.linkedin.com/in/pascalstockert" target="_blank"><img src="/icon/li.svg" alt="LinkedIn"/></a>
         <a href="mailto:hello+home@pasu.me" target="_blank"><img src="/icon/mail.svg" alt="Mail"/></a>
       </div>
-    </div>
-  </section>
-
-  <img
-    id="babby"
-    src="/img/eepy-babby.webp"
-    alt="In memoriam"
-    class="w-full h-[256px] border border-black rounded-2xl object-cover md:mb-8"
-  />
-
-  <section class="flex flex-col-reverse mb-16 md:grid md:grid-cols-[1fr_8px_1fr] md:gap-8">
-    <div class="flex items-center h-full p-8 border-8 border-malfi/40 rounded-2xl">
-      <p>
-        I'm a web developer currently based in Mönchengladbach, Germany. I've been working in the field for over five
-        years now, gathering experience in full-stack development. My main focus remains contributing towards a
-        white-label ticketing solution built on Angular and Nest.js.<br/>
-        <br/>
-        If you want to learn more about my previous work experience and education, feel free to have a look at my
-        <a href="/pdf/cv.pdf" target="_blank">curriculum</a>, or some of the projects that I worked on in my free
-        time.<br/>
-        <br/>
-        You may also want to take a look at my
-        <a href="https://www.linkedin.com/in/pascalstockert" target="_blank">LinkedIn profile</a> or
-        <a href="https://github.com/pascalstockert" target="_blank">GitHub account</a>.
-      </p>
-    </div>
-
-    <div class="flex gap-2 h-full p-8 md:flex-col md:px-0">
-      <div class="flex-1 w-2 bg-black/50 rounded-lg"></div>
-      <div class="w-2 h-2 bg-brock/40 rounded-lg"></div>
-      <div class="w-2 h-2 bg-yolol/40 rounded-lg"></div>
-      <div class="w-2 h-2 bg-malfi/40 rounded-lg"></div>
-    </div>
-
-    <div class="hidden w-full h-full p-8 border border-black rounded-2xl md:block">
-      <div
-        class="w-full h-full border border-black rounded-lg bg-cover bg-center bg-[url('https://cockpit.evo.pasu.me/assets/link/68a4e244dd3547c10e0793d5')]"
-      ></div>
-    </div>
-  </section>
-
-  <section class="pb-16">
-    <div class="px-4 py-8">
-      <h2 class="">Thoughts</h2>
-      <p>Intellectual sparks and interesting stuff on code</p>
-    </div>
-
-    <div id="thought-anchor" class="grid grid-rows-3 gap-8 pb-8 md:grid md:grid-rows-none md:grid-cols-3"></div>
-
-    <div class="flex justify-center w-full">
-      <a href="/ideas">
-        <button class="px-4 py-3 bg-malfi/40 rounded-lg hover:bg-malfi/50">explore my brain</button>
-      </a>
-    </div>
-  </section>
-
-  <section class="pb-16">
-    <div class="px-4 py-8">
-      <h2 class="">Projects</h2>
-      <p>Some practical stuff I've dabbled with</p>
-    </div>
-
-    <div id="project-anchor" class="flex flex-col gap-8"></div>
-  </section>
-
-  <section class="flex flex-col justify-center items-center gap-4 w-full px-4 pt-16 pb-8">
-    <p>tl;dr – I make websites</p>
-
-    <div class="flex gap-4 h-full">
-      <a href="/pdf/cv.pdf" target="_blank"><img src="/icon/cv.svg" alt="Curriculum Vitae"/></a>
-      <a href="https://github.com/pascalstockert" target="_blank"><img src="/icon/gh.svg" alt="GitHub"/></a>
-      <a href="https://www.linkedin.com/in/pascalstockert" target="_blank"><img src="/icon/li.svg" alt="LinkedIn"/></a>
-      <a href="mailto:hello+home@pasu.me" target="_blank"><img src="/icon/mail.svg" alt="Mail"/></a>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>
 
 <script type="module" src="/src/main.ts"></script>

@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="en" class="overflow-hidden">
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>hi, i'm pasu</title>
 </head>
-<body class="scroll-container overflow-scroll w-full h-screen bg-white">
+<body class="bg-white">
+
 <div class="max-w-[960px] w-full m-auto px-8 bg-white">
   <div class="relative w-full">
     <section class="flex justify-between items-center w-full pt-24 pb-8 px-4">
@@ -98,6 +99,18 @@
         <a href="mailto:hello+home@pasu.me" target="_blank"><img src="/icon/mail.svg" alt="Mail"/></a>
       </div>
     </section>
+  </div>
+</div>
+
+<div id="popup-container" class="fixed top-0 left-0 w-full h-screen p-8 bg-black/90">
+  <div class="flex justify-center items-center h-full w-full">
+    <div id="popup" class="max-w-[1024px] max-h-[800px] h-full w-full rounded-2xl overflow-hidden bg-white">
+      <iframe
+        src="https://yolol.pasu.me/"
+        width="100%"
+        height="100%"
+      ></iframe>
+    </div>
   </div>
 </div>
 
